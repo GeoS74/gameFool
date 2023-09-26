@@ -9,7 +9,11 @@ import java.util.List;
  * @author geos
  */
 public class CardHand implements ICardHand {
-    private ArrayList<ICard> cards = new ArrayList<>(6);
+    private final ArrayList<ICard> cards;
+
+    public CardHand() {
+        this.cards = new ArrayList<>(6);
+    }
 
     @Override
     public void sort() {

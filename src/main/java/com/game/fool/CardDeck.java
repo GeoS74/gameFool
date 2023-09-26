@@ -10,9 +10,9 @@ import java.util.Deque;
  * @author geos
  */
 public class CardDeck implements ICardDeck {
-    private Deque<ICard> cards;
+    private final Deque<ICard> cards;
     
-    {
+    CardDeck() {
         ArrayList<Card> c = new ArrayList<>(36);
         
         for(int s = 0; s < ICard.SUITS.length; s++) {

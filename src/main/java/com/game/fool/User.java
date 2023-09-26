@@ -1,7 +1,5 @@
 package com.game.fool;
 
-import java.util.List;
-
 /**
  *
  * @author geos

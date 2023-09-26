@@ -5,8 +5,8 @@ package com.game.fool;
  * @author geos
  */
 public class Card implements ICard {
-    private int suit;
-    private int weight;
+    private final int suit;
+    private final int weight;
     
     Card(int suit, int weight) {
         this.suit = suit;
