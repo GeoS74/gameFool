@@ -28,6 +28,11 @@ public class CardDeck implements ICardDeck {
     public ICard getFirstCard() {
         return this.cards.pollFirst();
     }
+    
+    @Override
+    public ICard getTrumpCard() {
+        return this.cards.peekLast();
+    }
 
     @Override
     public Deque<ICard> getCards() {

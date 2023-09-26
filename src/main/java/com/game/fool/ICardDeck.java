@@ -8,5 +8,8 @@ import java.util.Deque;
  */
 public interface ICardDeck extends ICardList {
     ICard getFirstCard();
+    ICard getTrumpCard();
     Deque<ICard> getCards();
+    @Override
+    int size();
 }
