@@ -2,6 +2,10 @@
 /home/geos/NetBeansProjects/Fool/src/main/java/com/game/fool/ICardList.java
 /home/geos/NetBeansProjects/Fool/src/main/java/com/game/fool/Card.java
 /home/geos/NetBeansProjects/Fool/src/main/java/com/game/fool/ICardDeck.java
+/home/geos/NetBeansProjects/Fool/src/main/java/com/game/fool/CardHand.java
 /home/geos/NetBeansProjects/Fool/src/main/java/com/game/fool/ICard.java
 /home/geos/NetBeansProjects/Fool/src/main/java/com/game/fool/ICardHand.java
 /home/geos/NetBeansProjects/Fool/src/main/java/com/game/fool/CardDeck.java
+/home/geos/NetBeansProjects/Fool/src/main/java/com/game/fool/IPlayer.java
+/home/geos/NetBeansProjects/Fool/src/main/java/com/game/fool/User.java
+/home/geos/NetBeansProjects/Fool/src/main/java/com/game/fool/Bot.java

@@ -1,6 +1,7 @@
 package com.game.fool;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -9,5 +10,6 @@ import java.util.ArrayList;
 public interface ICardHand extends ICardList {
     void sort();
     void addCard(ICard card);
+    void addCard(List<ICard> card);
     ArrayList<ICard> getCards();
 }
