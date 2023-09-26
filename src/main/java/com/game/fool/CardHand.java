@@ -17,8 +17,7 @@ public class CardHand implements ICardHand {
 
     @Override
     public void sort() {
-        Collections.sort(this.cards);
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Collections.sort(this.cards);    
     }
 
     @Override
@@ -30,6 +29,7 @@ public class CardHand implements ICardHand {
     @Override
     public void addCard(List<ICard> cards) {
         this.cards.addAll(cards);
+        this.sort();
     }
 
     @Override

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package com.game.fool;
 
 /**
@@ -10,7 +6,8 @@ package com.game.fool;
  */
 public class Fool {
     public static void main(String[] args) {
-         Game game = new Game();
+        System.out.println("start new game");
+        Game game = new Game();
     }
 }
 
@@ -19,8 +16,7 @@ class Game {
     IPlayer[] players = {new User(), new Bot()};
     int active = 0;
     
-    {
-        System.out.println("start new game");
+    Game() {
         ICardDeck cardDeck = new CardDeck();
         for(int i = 0; i < this.players.length * 6; i++) {
             if(i % 2 == 0) {
