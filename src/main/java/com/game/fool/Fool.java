@@ -11,7 +11,6 @@ public class Fool {
 }
 
 class Game {
-    int trump;
     IPlayer[] players = {new User(), new Bot()};
     int active = 0;
     ICardDeck cards;
@@ -27,7 +26,6 @@ class Game {
             this.players[1].upCard(this.cards.getFirstCard());
         }
         ICard t = this.cards.getFirstCard();
-        this.trump = t.getSuitCode();
         this.cards.getCards().offerLast(t);
         
         System.out.println("козырь:" + this.cards.getTrumpCard() + "\n");
