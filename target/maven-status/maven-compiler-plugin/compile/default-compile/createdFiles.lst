@@ -1,10 +1,11 @@
-com/game/fool/IPlayer.class
 com/game/fool/User.class
 com/game/fool/ICardHand.class
 com/game/fool/Game.class
+com/game/fool/ICardList.class
+com/game/fool/Player.class
+com/game/fool/IPlayer.class
 com/game/fool/ICardDeck.class
 com/game/fool/Card.class
-com/game/fool/ICardList.class
 com/game/fool/CardHand.class
 com/game/fool/ICard.class
 com/game/fool/CardDeck.class

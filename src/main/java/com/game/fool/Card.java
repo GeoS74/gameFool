@@ -38,11 +38,11 @@ public class Card implements ICard {
         return "\"" + this.getWeight() + " " + this.getSuit() + "\"";
     }
     
-//    @Override
-//    public int compareTo(Card o) {
-//        if(this.weight != o.getWeight()) {
-//            return this.weight - o.getWeight();
-//        }
-//        return this.suit - o.getSuit();   
-//    }
+    @Override
+    public int compareTo(ICard o) {
+        if(this.weight != o.getWeightCode()) {
+            return this.weight - o.getWeightCode();
+        }
+        return this.suit - o.getSuitCode();   
+    }
 }

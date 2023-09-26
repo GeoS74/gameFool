@@ -1,6 +1,7 @@
 package com.game.fool;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -12,12 +13,14 @@ public class CardHand implements ICardHand {
 
     @Override
     public void sort() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Collections.sort(this.cards);
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void addCard(ICard card) {
         this.cards.add(card);
+        this.sort();
     }
 
     @Override
