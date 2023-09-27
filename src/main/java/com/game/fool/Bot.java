@@ -8,11 +8,27 @@ public class Bot extends Player implements IPlayer {
 
     @Override
     public ICard getCard() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if(this.cards.getCards().size() == 0) {
+            return null;
+        }
+        
+        int index = Bot.rnd(0, this.cards.getCards().size()-1);
+        return this.cards.getCards().get(index);
     }
 
     @Override
     public ICard coverCard(ICard card, int suitCode) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        for(ICard c: this.cards.getCards()) {
+            if(this.compareCards(card, c, suitCode)){
+                return c;
+            }
+        }
+        return null;
+    }
+    
+    public static int rnd(int min, int max)
+    {
+        max -= min;
+        return (int) (Math.random() * ++max) + min;
     }
 }

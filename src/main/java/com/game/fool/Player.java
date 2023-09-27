@@ -7,7 +7,7 @@ import java.util.List;
  * @author geos
  */
 abstract public class Player implements IPlayer {
-    private final ICardHand cards;
+    final ICardHand cards;
 
     public Player() {
         this.cards = new CardHand();
@@ -37,7 +37,7 @@ abstract public class Player implements IPlayer {
         System.out.print("\n");
     }
     
-    protected boolean compareCard(ICard card_1, ICard card_2, int suitCode) {
+    protected boolean compareCards(ICard card_1, ICard card_2, int suitCode) {
         if(card_1.getSuitCode() == card_2.getSuitCode()) {
             return card_1.getSuitCode() < card_2.getSuitCode();
         }
