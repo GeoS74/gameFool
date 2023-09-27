@@ -7,6 +7,7 @@ package com.game.fool;
 public class Fool {
     public static void main(String[] args) {
         Game game = new Game();
+        game.run();
     }
 }
 
@@ -30,12 +31,31 @@ class Game {
         
         System.out.println("козырь:" + this.cards.getTrumpCard() + "\n");
         this.players[0].showCards();
-        this.run();
     }
     
-    private void run() {
+    public void run() {
+        this.round();
+//        while(true) {
+//            break;
+//        }
+    }
+    
+    private int round() {
         while(true) {
+            if(this.active == 0) {
+                System.out.println("твой ход");
+            }
+            System.out.println("бот ходит");
+            
+            
+            int guardIdx = this.active == this.players.length ? 0 : 1;
+            
+            ICard card_1 = this.players[this.active].getCard();
+//            ICard card_2 = this.players[guardIdx].getCard();
+            
             break;
         }
+        
+        return 0;
     }
 }

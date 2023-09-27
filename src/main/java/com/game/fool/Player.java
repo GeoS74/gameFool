@@ -17,7 +17,7 @@ abstract public class Player implements IPlayer {
     abstract public ICard getCard();
 
     @Override
-    abstract public ICard coverCard(ICard card);
+    abstract public ICard coverCard(ICard card, int suitCode);
 
     @Override
     public void upCard(List<ICard> cards) {
@@ -35,5 +35,13 @@ abstract public class Player implements IPlayer {
             System.out.print("(" + (i+1) + ") " + this.cards.getCards().get(i) + " ");
         }
         System.out.print("\n");
+    }
+    
+    protected boolean compareCard(ICard card_1, ICard card_2, int suitCode) {
+        if(card_1.getSuitCode() == card_2.getSuitCode()) {
+            return card_1.getSuitCode() < card_2.getSuitCode();
+        }
+        
+        return card_2.getSuitCode() == suitCode;
     }
 }

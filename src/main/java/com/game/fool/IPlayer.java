@@ -8,8 +8,9 @@ import java.util.List;
  */
 public interface IPlayer {
     ICard getCard();
-    ICard coverCard(ICard card);
+    ICard coverCard(ICard card, int suitCode);
     void upCard(List<ICard> cards);
     void upCard(ICard card);
     void showCards();
 }
+
