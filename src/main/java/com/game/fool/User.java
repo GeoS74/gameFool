@@ -57,6 +57,7 @@ public class User extends Player implements IPlayer {
         }
         
         ICard c = this.cards.getCards().get(index-1);
+//        System.out.println("take card" + c + "покрыть надо: " + card + " " + this.compareCards(card, c, suitCode));
         if(this.compareCards(card, c, suitCode)){
             this.cards.delCard(c);
             return c;

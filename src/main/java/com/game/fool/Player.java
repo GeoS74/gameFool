@@ -39,7 +39,7 @@ abstract public class Player implements IPlayer {
     
     protected boolean compareCards(ICard card_1, ICard card_2, int suitCode) {
         if(card_1.getSuitCode() == card_2.getSuitCode()) {
-            return card_1.getSuitCode() < card_2.getSuitCode();
+            return card_1.getWeightCode() < card_2.getWeightCode();
         }
         
         return card_2.getSuitCode() == suitCode;
