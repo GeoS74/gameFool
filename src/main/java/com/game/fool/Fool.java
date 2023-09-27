@@ -16,7 +16,7 @@ public class Fool {
 
 class Game {
     IPlayer[] players = {new User(), new Bot()};
-    int active = 0;
+    int active = 1;
     ICardDeck cards;
     
     Game() {
@@ -32,15 +32,18 @@ class Game {
         ICard t = this.cards.getFirstCard();
         this.cards.getCards().offerLast(t);
         
-        System.out.println("козырь:" + this.cards.getTrumpCard() + "\n");
+//        System.out.println("козырь:" + this.cards.getTrumpCard() + "\n");
 //        this.players[0].showCards();
     }
     
     public void run() {
-        this.round();
-//        while(true) {
+        while(true) {
+            System.out.println("козырь:" + this.cards.getTrumpCard() + "\n");
+            this.round();
 //            break;
-//        }
+            this.active = this.active == 0 ? 1 : 0;
+            System.out.println("\n\n\n");
+        }
     }
     
     private int round() {
@@ -54,25 +57,26 @@ class Game {
         }
             
             
-        int guardIdx = this.active == this.players.length ? 0 : 1;
+        int guardIdx = this.active == this.players.length-1 ? 0 : 1;
             
         while(true) {
             this.players[0].showCards();
             
-            ICard card_1 = this.players[this.active].getCard();
+            ICard card_1 = this.players[this.active].getCard(stack);
             if(card_1 == null) {
                 System.out.println("всё, отбился");
                 stack.clear();
                 return 0;
             }
             
-            System.out.print(card_1);
+            System.out.println(card_1);
             
             ICard card_2 = this.players[guardIdx]
                     .coverCard(card_1, this.cards.getTrumpCard().getSuitCode());
             
             if(card_2 == null) {
                 System.out.println("не смог покрыться");
+                this.players[guardIdx].upCard(stack);
                 stack.clear();
                 return 0;
             }

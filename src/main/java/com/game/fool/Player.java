@@ -14,7 +14,7 @@ abstract public class Player implements IPlayer {
     }
 
     @Override
-    abstract public ICard getCard();
+    abstract public ICard getCard(List<ICard> cards);
 
     @Override
     abstract public ICard coverCard(ICard card, int suitCode);
