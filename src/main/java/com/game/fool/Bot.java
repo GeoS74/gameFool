@@ -13,13 +13,16 @@ public class Bot extends Player implements IPlayer {
         }
         
         int index = Bot.rnd(0, this.cards.getCards().size()-1);
-        return this.cards.getCards().get(index);
+        ICard card = this.cards.getCards().get(index);
+        this.cards.delCard(card);
+        return card;
     }
 
     @Override
     public ICard coverCard(ICard card, int suitCode) {
         for(ICard c: this.cards.getCards()) {
             if(this.compareCards(card, c, suitCode)){
+                this.cards.delCard(c);
                 return c;
             }
         }

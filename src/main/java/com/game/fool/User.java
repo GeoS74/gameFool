@@ -20,8 +20,9 @@ public class User extends Player implements IPlayer {
             System.out.println("game over");
             System.exit(0);
         }
-        
-        return this.cards.getCards().get(index);
+        ICard card = this.cards.getCards().get(index);
+        this.cards.delCard(card);
+        return card;
     }
 
     @Override
@@ -35,6 +36,7 @@ public class User extends Player implements IPlayer {
         
         ICard c = this.cards.getCards().get(index);
         if(this.compareCards(card, c, suitCode)){
+            this.cards.delCard(c);
             return c;
         }
         

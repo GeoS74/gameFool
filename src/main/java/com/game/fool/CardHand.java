@@ -46,4 +46,9 @@ public class CardHand implements ICardHand {
     public String toString() {
         return this.cards.toString();
     }
+
+    @Override
+    public void delCard(ICard card) {
+        this.cards.remove(card);
+    }
 }

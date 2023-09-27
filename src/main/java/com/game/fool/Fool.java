@@ -1,6 +1,7 @@
 package com.game.fool;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -32,7 +33,7 @@ class Game {
         this.cards.getCards().offerLast(t);
         
         System.out.println("козырь:" + this.cards.getTrumpCard() + "\n");
-        this.players[0].showCards();
+//        this.players[0].showCards();
     }
     
     public void run() {
@@ -43,7 +44,7 @@ class Game {
     }
     
     private int round() {
-        ArrayList<ICard[]> table = new ArrayList<>();
+        ArrayList<ICard> stack = new ArrayList<>();
         
         if(this.active == 0) {
                 System.out.println("твой ход");
@@ -56,10 +57,12 @@ class Game {
         int guardIdx = this.active == this.players.length ? 0 : 1;
             
         while(true) {
+            this.players[0].showCards();
+            
             ICard card_1 = this.players[this.active].getCard();
             if(card_1 == null) {
                 System.out.println("всё, отбился");
-                table.clear();
+                stack.clear();
                 return 0;
             }
             
@@ -70,13 +73,12 @@ class Game {
             
             if(card_2 == null) {
                 System.out.println("не смог покрыться");
-                table.clear();
+                stack.clear();
                 return 0;
             }
             System.out.println(card_2);
             
-            ICard[]  couple = {card_1, card_2};
-            table.add(couple);
+            Collections.addAll(stack, card_1, card_2);
         }
     }
 }

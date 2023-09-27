@@ -11,6 +11,7 @@ public interface ICardHand extends ICardList {
     void sort();
     void addCard(ICard card);
     void addCard(List<ICard> card);
+    void delCard(ICard card);
     ArrayList<ICard> getCards();
     @Override
     int size();
