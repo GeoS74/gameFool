@@ -18,6 +18,11 @@ abstract public class Player implements IPlayer {
 
     @Override
     abstract public ICard coverCard(ICard card, int suitCode);
+    
+    @Override
+    public int countCards() {
+        return this.cards.size();
+    }
 
     @Override
     public void upCard(List<ICard> cards) {

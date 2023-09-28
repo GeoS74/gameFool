@@ -11,6 +11,7 @@ import java.util.Deque;
  */
 public class CardDeck implements ICardDeck {
     private final Deque<ICard> cards;
+    private ICard trumpCard;
     
     CardDeck() {
         ArrayList<Card> c = new ArrayList<>(36);
@@ -31,7 +32,14 @@ public class CardDeck implements ICardDeck {
     
     @Override
     public ICard getTrumpCard() {
-        return this.cards.peekLast();
+        return this.trumpCard;
+    }
+    
+    @Override
+    public void setTrumpCard() {
+        ICard c = this.getFirstCard();
+        this.trumpCard = c;
+        this.cards.addLast(c);
     }
 
     @Override

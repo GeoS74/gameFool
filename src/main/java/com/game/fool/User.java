@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class User extends Player implements IPlayer {
 
     @Override
-    public ICard getCard(List<ICard> cards) {
+    public ICard getCard(List<ICard> stack) {
         if(this.cards.getCards().size() == 0) {
             return null;
         }
@@ -28,19 +28,19 @@ public class User extends Player implements IPlayer {
         
         ICard card = this.cards.getCards().get(index-1);
         
-        if(cards.size() == 0) {
+        if(stack.size() == 0) {
             this.cards.delCard(card);
             return card;
         }
         
-        for(ICard c: cards) {
-            if(card.getWeightCode() == c.getWeightCode()) {
+        for(ICard s: stack) {
+            if(card.getWeightCode() == s.getWeightCode()) {
                 this.cards.delCard(card);
                 return card;
             }
         }
         System.out.println("так ходить нельзя");
-        return this.getCard(cards); // recursive
+        return this.getCard(stack); // recursive
     }
 
     @Override
@@ -57,7 +57,7 @@ public class User extends Player implements IPlayer {
         }
         
         ICard c = this.cards.getCards().get(index-1);
-//        System.out.println("take card" + c + "покрыть надо: " + card + " " + this.compareCards(card, c, suitCode));
+
         if(this.compareCards(card, c, suitCode)){
             this.cards.delCard(c);
             return c;

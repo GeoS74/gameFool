@@ -29,7 +29,6 @@ public class Bot extends Player implements IPlayer {
                 }
             }
         }
-        
         return null;
     }
 

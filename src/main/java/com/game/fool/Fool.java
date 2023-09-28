@@ -22,53 +22,50 @@ class Game {
     Game() {
         System.out.println("start new game\n");
         this.cards = new CardDeck();
-        for(int i = 0; i < this.players.length * 6; i++) {
-            if(i % 2 == 0) {
-                this.players[0].upCard(this.cards.getFirstCard());
-                continue;
-            }
-            this.players[1].upCard(this.cards.getFirstCard());
-        }
-        ICard t = this.cards.getFirstCard();
-        this.cards.getCards().offerLast(t);
-        
-//        System.out.println("козырь:" + this.cards.getTrumpCard() + "\n");
-//        this.players[0].showCards();
+        this.dealingCards();
+        this.cards.setTrumpCard();
     }
     
     public void run() {
         while(true) {
+            this.dealingCards();
+            System.out.println("====================================\n");
             System.out.println("козырь:" + this.cards.getTrumpCard() + "\n");
-            this.round();
-//            break;
-            this.active = this.active == 0 ? 1 : 0;
-            System.out.println("\n\n\n");
+            
+            int result = this.round();
+            
+            if(result == 1){
+                this.active = this.active == 0 ? 1 : 0;
+            }
         }
     }
     
     private int round() {
         ArrayList<ICard> stack = new ArrayList<>();
-        
-        if(this.active == 0) {
-                System.out.println("твой ход");
-            }
-        else {
-            System.out.println("бот ходит");
-        }
-            
-            
+  
         int guardIdx = this.active == this.players.length-1 ? 0 : 1;
             
         while(true) {
+            System.out.println("\n");
+            System.out.print("на руках: ");
             this.players[0].showCards();
+            System.out.println("\n");
+            
+            if(this.active == 0) {
+                System.out.print("твой ход: ");
+            }
+            else {
+                System.out.print("бот ходит: ");
+            }
             
             ICard card_1 = this.players[this.active].getCard(stack);
             if(card_1 == null) {
                 System.out.println("всё, отбился");
                 stack.clear();
-                return 0;
+                return 1;
             }
             
+            stack.add(card_1);
             System.out.println(card_1);
             
             ICard card_2 = this.players[guardIdx]
@@ -80,9 +77,18 @@ class Game {
                 stack.clear();
                 return 0;
             }
-            System.out.println(card_2);
             
-            Collections.addAll(stack, card_1, card_2);
+            stack.add(card_2);
+            System.out.println(card_2);
+        }
+    }
+    
+    // раздача карт
+    private void dealingCards() {
+        for(IPlayer p: this.players) {
+            while(p.countCards() < 6) {
+                p.upCard(this.cards.getFirstCard());
+            }
         }
     }
 }
