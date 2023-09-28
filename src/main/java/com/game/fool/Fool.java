@@ -33,9 +33,6 @@ class Game {
     public void run() {
         while(true) {
             this.dealingCards();
-            if(this.hasFool() != -1) {
-                gameOver(this.hasFool());
-            }
             System.out.println("====================================\n");
             System.out.println("в колоде: " + this.cards.size() + " карт\n");
             System.out.println("козырь: " + this.cards.getTrumpCard() + "\n");
@@ -69,6 +66,9 @@ class Game {
             
             ICard card_1 = this.players[this.active].getCard(stack);
             if(card_1 == null) {
+                if(this.hasFool() != -1) {
+                    gameOver(this.hasFool());
+                }
                 System.out.println("всё, отбился");
                 stack.clear();
                 return 1;
