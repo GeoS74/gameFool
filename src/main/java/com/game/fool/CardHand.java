@@ -17,7 +17,7 @@ public class CardHand implements ICardHand {
 
     @Override
     public void sort() {
-        Collections.sort(this.cards);    
+        Collections.sort(this.cards); 
     }
 
     @Override

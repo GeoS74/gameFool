@@ -35,7 +35,8 @@ class Game {
         while(true) {
             this.dealingCards();
             System.out.println("====================================\n");
-            System.out.println("козырь:" + this.cards.getTrumpCard() + "\n");
+            System.out.println("в колоде: " + this.cards.size() + " карт\n");
+            System.out.println("козырь: " + this.cards.getTrumpCard() + "\n");
             
             int result = this.round();
             
@@ -52,6 +53,7 @@ class Game {
             
         while(true) {
             System.out.println("\n");
+            System.out.println("у бота: " + this.players[1].countCards() + " карт\n");
             System.out.print("на руках: ");
             this.players[0].showCards();
             System.out.println("\n");
@@ -105,7 +107,11 @@ class Game {
     private void dealingCards() {
         for(IPlayer p: this.players) {
             while(p.countCards() < 6) {
-                p.upCard(this.cards.getFirstCard());
+                ICard card = this.cards.getFirstCard();
+                if(card == null) {
+                    break;
+                }
+                p.upCard(card);
             }
         }
     }
