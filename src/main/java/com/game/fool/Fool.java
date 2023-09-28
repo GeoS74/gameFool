@@ -1,7 +1,6 @@
 package com.game.fool;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  *
@@ -34,6 +33,9 @@ class Game {
     public void run() {
         while(true) {
             this.dealingCards();
+            if(this.hasFool() != -1) {
+                gameOver(this.hasFool());
+            }
             System.out.println("====================================\n");
             System.out.println("в колоде: " + this.cards.size() + " карт\n");
             System.out.println("козырь: " + this.cards.getTrumpCard() + "\n");
@@ -89,6 +91,35 @@ class Game {
             System.out.println(card_2);
         }
     }
+
+    private void gameOver(int indexPlayer) {
+        if(indexPlayer == 0) {
+            System.out.println("ты проиграл, ты дурак!!!");
+        } else {
+            System.out.println("бот проиграл, бот дурак!!!");
+        }
+        
+        System.out.println("конец игры");
+        System.exit(0);
+    }
+    
+    // проверка на победу
+     private int hasFool() {
+         if(this.cards.size() == 0) {
+             ArrayList<Integer> p = new ArrayList<>();
+             
+             for(int i = 0; i < this.players.length; i++) {
+                 if(this.players[i].countCards() > 0) {
+                     p.add(i);
+                 }
+             }
+             
+             if(p.size() == 1) {
+                 return p.get(0);
+             }
+         }
+         return -1;
+     }
     
     // кто ходит первым
     private int whoIsFirstStepp(){
