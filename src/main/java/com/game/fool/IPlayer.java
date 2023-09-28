@@ -13,5 +13,6 @@ public interface IPlayer {
     void upCard(List<ICard> cards);
     void upCard(ICard card);
     void showCards();
+    boolean hasCard(ICard card);
 }
 

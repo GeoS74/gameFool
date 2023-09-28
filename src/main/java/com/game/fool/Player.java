@@ -42,6 +42,19 @@ abstract public class Player implements IPlayer {
         System.out.print("\n");
     }
     
+    @Override
+    public boolean hasCard(ICard card) {
+        for(ICard c: this.cards.getCards()) {
+            if(c.getSuitCode() == card.getSuitCode()){
+                if(c.getWeightCode() == card.getWeightCode()) {
+                    return true;
+                }
+            }
+        }
+        
+        return false;
+    }
+    
     protected boolean compareCards(ICard card_1, ICard card_2, int suitCode) {
         if(card_1.getSuitCode() == card_2.getSuitCode()) {
             return card_1.getWeightCode() < card_2.getWeightCode();

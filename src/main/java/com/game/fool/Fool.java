@@ -24,6 +24,11 @@ class Game {
         this.cards = new CardDeck();
         this.dealingCards();
         this.cards.setTrumpCard();
+        int i = this.whoIsFirstStepp();
+        if(i == -1) {
+            System.out.println("нет козырей на руках");
+        }
+        this.active = i;
     }
     
     public void run() {
@@ -81,6 +86,19 @@ class Game {
             stack.add(card_2);
             System.out.println(card_2);
         }
+    }
+    
+    // кто ходит первым
+    private int whoIsFirstStepp(){
+        for(int i = 0; i < this.players.length; i++) {
+            for(int w = 0; w < ICard.WEIGHTS.length; w++) {
+                
+                if(this.players[i].hasCard(new Card(this.cards.getTrumpCard().getSuitCode(), w))) {
+                    return i;
+                }
+            }
+        }
+        return -1;
     }
     
     // раздача карт
